@@ -289,7 +289,7 @@ const Restaurants = () => {
                 id: 1,
                 image: "https://img.freepik.com/vecteurs-libre/illustration-coloree-du-programmeur-travaillant_23-2148281410.jpg?t=st=1729704384~exp=1729707984~hmac=4838abbdb67fc1347ff36c3540d184a59f8df103531296e2b2296be09440f4f3&w=740",
                 title: "Login & list",
-                link: "./exoJS/login.html"
+                link: "./exoJs/login.html"
             }, {
                 desc: "Zone de text avec button qui prend la valeur du txt",
                 id: 2,
