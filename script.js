@@ -3,7 +3,7 @@ function change(){
     document.getElementById('text').value = '';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('text').addEventListener('input', function() {
         document.getElementById('btn').innerHTML = this.value;
     });
