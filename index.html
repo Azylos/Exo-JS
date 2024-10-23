@@ -24,7 +24,7 @@
         </div>
       </div>
       <!-- <div class="max-w-md p-6 bg-dark border border-gray-200 rounded-lg shadow dark:bg-dark dark:border-dark"> -->
-    <form class="max-w-md mx-auto py-16">
+    <form class="max-w-md mx-auto py-16" action="./exo js/index.html" method="post">
         <div class="grid md:grid-cols-2 md:gap-6">
           <div class="relative z-0 w-full mb-5 group">
               <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-purple-600 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-purple-600 dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
@@ -105,7 +105,6 @@
     }
 
     form.on('submit', function(e) {
-        e.preventDefault();
         let isValid = true;
 
         // Validation du nom
@@ -113,9 +112,11 @@
         if (nom.val().trim() === '') {
             isValid = false;
             addError(nom, 'Le nom est requis');
+            e.preventDefault();
         } else if (nom.val().length < 2) {
             isValid = false;
             addError(nom, 'Le nom doit contenir au moins 2 caractères');
+            e.preventDefault();
         } else {
             removeError(nom);
         }
@@ -125,9 +126,11 @@
         if (prenom.val().trim() === '') {
             isValid = false;
             addError(prenom, 'Le prénom est requis');
+            e.preventDefault();
         } else if (prenom.val().length < 2) {
             isValid = false;
             addError(prenom, 'Le prénom doit contenir au moins 2 caractères');
+            e.preventDefault();
         } else {
             removeError(prenom);
         }
@@ -137,9 +140,11 @@
         if (email.val().trim() === '') {
             isValid = false;
             addError(email, 'L\'email est requis');
+            e.preventDefault();
         } else if (!isValidEmail(email.val())) {
             isValid = false;
             addError(email, 'Veuillez entrer une adresse email valide');
+            e.preventDefault();
         } else {
             removeError(email);
         }
@@ -149,22 +154,26 @@
         if (pseudo.val().trim() === '') {
             isValid = false;
             addError(pseudo, 'Le pseudo est requis');
+            e.preventDefault();
         } else if (pseudo.val().length < 3) {
             isValid = false;
             addError(pseudo, 'Le pseudo doit contenir au moins 3 caractères');
+            e.preventDefault();
         } else {
             removeError(pseudo);
         }
 
         // Validation du mot de passe
         const password = $('#floating_password');
-        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?]{8,}$/;
         if (password.val() === '') {
             isValid = false;
             addError(password, 'Le mot de passe est requis');
+            e.preventDefault();
         } else if (!passwordRegex.test(password.val())) {
             isValid = false;
             addError(password, 'Le mot de passe doit contenir au moins 8 caractères, une lettre et un chiffre');
+            e.preventDefault();
         } else {
             removeError(password);
         }
@@ -174,17 +183,19 @@
         if (confirmPassword.val() === '') {
             isValid = false;
             addError(confirmPassword, 'La confirmation du mot de passe est requise');
+            e.preventDefault();
         } else if (confirmPassword.val() !== password.val()) {
             isValid = false;
             addError(confirmPassword, 'Les mots de passe ne correspondent pas');
+            e.preventDefault();
         } else {
             removeError(confirmPassword);
         }
 
         // Si tout est valide, on peut soumettre le formulaire
-        if (isValid) {
-            alert('Formulaire valide, envoi des données...');
-        }
+        // if (isValid) {
+        //     alert('Formulaire valide, envoi des données...');
+        // }
     });
 
     // Validation en temps réel lors de la saisie
